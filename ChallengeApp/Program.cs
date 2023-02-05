@@ -1,24 +1,52 @@
-﻿int number = 596256910;
-string numberInString = number.ToString();
-char[] letters = numberInString.ToArray();
+﻿using ChallengeApp;
 
-int[] numberOfNumbers = new int[10];
+Employee employee1 = new Employee("Daniel", "Kowalski", "36");
+Employee employee2 = new Employee("Damian", "Koch", "41");
+Employee employee3 = new Employee("Kasia", "Bigaj", "31");
 
-foreach (char letter in letters)
+employee1.AddScore(5);
+employee1.AddScore(10);
+employee1.AddScore(6);
+employee1.AddScore(5);
+employee1.AddScore(2);
+
+
+employee2.AddScore(10);
+employee2.AddScore(8);
+employee2.AddScore(5);
+employee2.AddScore(4);
+employee2.AddScore(5);
+
+
+
+employee3.AddScore(7);
+employee3.AddScore(5);
+employee3.AddScore(2);
+employee3.AddScore(8);
+employee3.AddScore(6);
+
+List<Employee> employees = new List<Employee>()
 {
-    if (letter == '1') numberOfNumbers[1]++;
-    else if (letter == '2') numberOfNumbers[2]++;
-    else if (letter == '3') numberOfNumbers[3]++;
-    else if (letter == '4') numberOfNumbers[4]++;
-    else if (letter == '5') numberOfNumbers[5]++;
-    else if (letter == '6') numberOfNumbers[6]++;
-    else if (letter == '7') numberOfNumbers[7]++;
-    else if (letter == '8') numberOfNumbers[8]++;
-    else if (letter == '9') numberOfNumbers[9]++;
+    employee1, employee2, employee3
+};
+
+int maxResult = -1;
+Employee employeeWithMaxResult = null;
+
+foreach(var employee in employees)
+{
+    
+    if (employee.Result > maxResult)
+    {
+        employeeWithMaxResult = employee;
+        maxResult = employee.Result;
+
+    }
 
 }
-
-for (int i = 0; i < numberOfNumbers.Length; i++)
-{
-    Console.WriteLine(i + "=>" + numberOfNumbers[i]);
-}
+                                                                 
+Console.WriteLine("Pacownik z największą liczbą punktów:");
+Console.WriteLine();
+Console.WriteLine("Imię i Nazwisko:" + " ==> " + employeeWithMaxResult.Name + " " + employeeWithMaxResult.Surname);
+Console.WriteLine("Lat :" + " ==> " + employeeWithMaxResult.Age);
+Console.WriteLine("Liczba Uzyskanych Punktów:" + " ==> " + maxResult);
